@@ -1,10 +1,20 @@
+//heard
+document.addEventListener("DOMContentLoaded", function () {
 
+    const navbarHeartBtn = document.querySelector(".btn");
+    let heartCount = 0;
+    const heartIcons = document.querySelectorAll(".fa-heart");
 
+    heartIcons.forEach(icon => {
+        icon.addEventListener("click", function () {
+            heartCount++;
 
+            navbarHeartBtn.childNodes[0].nodeValue = heartCount;
 
-
-
-
+            icon.classList.toggle("liked");
+        });
+    });
+});
 
 
 //  call-btn 
@@ -12,8 +22,6 @@
 const callBtns = document.querySelectorAll('.call-btn');
 const coinBtn = document.getElementById('coin-btn');
 const callCost = 20;
-
-// Call history ul
 const callHistoryEl = document.getElementById('call-history');
 
 // Clear history button
@@ -23,8 +31,6 @@ if(clearBtn){
     callHistoryEl.innerHTML = '';
   });
 }
-
-// Call button event
 callBtns.forEach(function(callBtn){
   callBtn.addEventListener('click', function(){
     let balance = parseInt(coinBtn.innerText);
@@ -45,63 +51,6 @@ callBtns.forEach(function(callBtn){
       const timeStr = now.toLocaleTimeString();
 const clearBtn = document.querySelector('.clear-btn');
 
-// if (clearBtn) {
-//   clearBtn.addEventListener('click', function () {
-//     callHistoryEl.innerHTML = ''; 
-//     alert("✅ Call history cleared!");
-// //   });
-// // }
-
-// const callBtns = document.querySelectorAll('.call-btn');
-// const coinBtn = document.getElementById('coin-btn'); // Coin balance
-// const callHistoryEl = document.getElementById('call-history');
-// const clear = document.querySelector('.clear-btn');
-// const callCost = 20;
-
-// // Call button click event
-// callBtns.forEach(function(callBtn) {
-//   callBtn.addEventListener('click', function() {
-//     let balance = parseInt(coinBtn.innerText); // Current coin balance
-
-//     if (balance < callCost) {
-//       alert("X You don't have enough coins to make a call!");
-//       return;
-//     }
-
-//     // Confirm alert
-//     if (confirm("📞 Calling National! Emergency Service 999...")) {
-//       balance -= callCost;
-//       coinBtn.innerText = balance;
-//       coinBtn.appendChild(coinBtn.querySelector('.coin')); // Keep coin icon
-
-//       // Get service name & number from closest section
-//       const copyDiv = callBtn.closest('.copy');
-//       const nameEl = copyDiv.querySelector('.text-div h1'); // Service name
-//       const numberEl = copyDiv.querySelector('h1:nth-of-type(2)'); // Service number
-//       const name = nameEl ? nameEl.innerText : 'Unknown';
-//       const number = numberEl ? numberEl.innerText : 'Unknown';
-
-//       // Add to call history
-//       const li = document.createElement('li');
-//       const now = new Date();
-//       const timeStr = now.toLocaleTimeString();
-//       li.innerText = `${name} - ${number} (Time: ${timeStr})`;
-//       callHistoryEl.appendChild(li);
-//     }
-//   });
-// });
-
-// // Clear History button click
-// if (clearBtn) {
-//   clearBtn.addEventListener('click', function() {
-//     callHistoryEl.innerHTML = '';
-//     alert("✅ Call history cleared!");
-//   });
-// }
-
-
-
-
     }
   });
 });
@@ -118,6 +67,52 @@ copyButtons.forEach(button => {
     btnGreen.innerText = count + " copy"; 
   });
 });
+// copy past button
 
+let copyCount = 0;
 
+document.querySelectorAll(".copy-btn1").forEach(button => {
+  button.addEventListener("click", function() {
+    let number = this.getAttribute("data-number");
+    
+
+    navigator.clipboard.writeText(number)
+      .then(() => {
+    
+        alert(`emergency-service.netlify.app says: ${number} copied!`);
+        
+
+        copyCount++;
+        document.querySelector(".btn-green").innerText = `${copyCount} copy`;
+      })
+      .catch(err => {
+        console.error("Copy failed", err);
+      });
+  });
+});
+
+//date
+
+document.addEventListener("DOMContentLoaded", () => {
+  const callButtons = document.querySelectorAll(".call-btn");
+  const callHistoryList = document.getElementById("call history"); 
+
+  callButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      let number = button.closest(".div-btn")
+                        .querySelector(".copy-btn1")
+                        .getAttribute("data-number");
+
+      let time = getCurrentTime();
+      let li = document.createElement("p");
+      li.textContent = ` ${number} at ${time}`;
+      callHistoryList.appendChild(li);
+    });
+  });
+});
+
+function getCurrentTime() {
+  let now = new Date();
+  return now.toLocaleTimeString();
+}
 
