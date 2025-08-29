@@ -95,7 +95,7 @@ document.querySelectorAll(".copy-btn1").forEach(button => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const callButtons = document.querySelectorAll(".call-btn");
-  const callHistoryList = document.getElementById("call history"); 
+  const callHistoryList = document.getElementById("call_history"); 
 
   callButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -104,9 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         .getAttribute("data-number");
 
       let time = getCurrentTime();
-      let li = document.createElement("p");
-      li.textContent = ` ${number} at ${time}`;
-      callHistoryList.appendChild(li);
+      let child = document.createElement("p");
+      child.textContent = ` ${number} at ${time}`;
+      callHistoryList.appendChild(child);
+      
     });
   });
 });

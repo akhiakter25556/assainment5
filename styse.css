@@ -104,17 +104,17 @@ img {
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+ /* background-color: rgb(251, 247, 243); */
+background: rgba(245, 255, 246, 1);
+
 }
 
 .copy {
     width: 300px;
-    height: 190px;
-    gap: 15px;
-    margin: 0 auto;
+    height: 200px;
     border-radius: 12px;
     margin-top: 15px;
-    margin-left: 15px;
+margin: 20px;
     /* shadow2 */
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.15);
     background: var(--White, rgba(255, 255, 255, 1));
@@ -122,8 +122,8 @@ img {
 }
 
 .eme-img {
-    margin-left: 10px;
-    /* margin-top: 10px; */
+    margin-left: 15px;
+ 
 }
 
 .eme-img img {
@@ -141,7 +141,7 @@ img {
 .text-div {
     font-size: 10px;
     align-items: center;
-    padding: 10px;
+    padding: 20px;
 }
 
 .h-btn {
@@ -171,7 +171,11 @@ img {
     padding: 5px;
     border: none;
 }
-
+.copy{
+gap: 30px;
+width: 300px;
+height: 200px;
+}
 .copy-btn1 {
     width: 180px;
     /* height: 40px; */
@@ -246,14 +250,18 @@ img {
 }
 
 /* parent div */
-
+.main{
+    width: 100%;
+}
 .call-h1 {
     display: flex;
     justify-content: space-between;
-    gap: 13px;
+    gap: 50px;
     width: 100%;
-    padding: 10px 15px;
+    /* padding: 10px 15px; */
     border-bottom: 1px solid #ddd;
+    margin-top: 20px;
+    padding: 20px;
 }
 
 .parent-div {
@@ -268,4 +276,8 @@ img {
     justify-content: space-between;
     font-size: 16px;
     padding: 10px;
+}
+.child h1, h2{
+font-size: 15px;
+padding: 5px;
 }
